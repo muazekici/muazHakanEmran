@@ -1,6 +1,7 @@
 package com.muazhakanemran.myapplication.network_client;
 
 import com.muazhakanemran.myapplication.events.GetUserJobListResponseEvent;
+import com.muazhakanemran.myapplication.events.PostDoTransactionResponseEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
 import com.muazhakanemran.myapplication.events.SubscribeNewUserResponseEvent;
 import com.muazhakanemran.myapplication.events.VendorListResponseEvent;
@@ -9,6 +10,8 @@ import com.muazhakanemran.myapplication.models.GetNearVendorsRequest;
 import com.muazhakanemran.myapplication.models.Job;
 import com.muazhakanemran.myapplication.models.JobList;
 import com.muazhakanemran.myapplication.models.PostJobResponse;
+import com.muazhakanemran.myapplication.models.PostNewTransaction;
+import com.muazhakanemran.myapplication.models.PostNewTransactionResponse;
 import com.muazhakanemran.myapplication.models.SubscribeNewUser;
 import com.muazhakanemran.myapplication.models.VendorList;
 import com.squareup.otto.Bus;
@@ -134,6 +137,25 @@ public class NetworkClient {
 
             @Override
             public void onFailure(Call<BasicResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    public void postNewTransaction(PostNewTransaction transaction){
+        Call<PostNewTransactionResponse> call = apiServiceInstance.postNewTransactipn(transaction);
+
+        call.enqueue(new Callback<PostNewTransactionResponse>() {
+            @Override
+            public void onResponse(Call<PostNewTransactionResponse> call, Response<PostNewTransactionResponse> response) {
+                PostDoTransactionResponseEvent event = new PostDoTransactionResponseEvent();
+                event.setResponse(response.body());
+                mBus.post(event);
+            }
+
+            @Override
+            public void onFailure(Call<PostNewTransactionResponse> call, Throwable t) {
 
             }
         });

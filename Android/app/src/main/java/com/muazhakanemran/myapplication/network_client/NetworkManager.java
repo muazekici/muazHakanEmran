@@ -4,9 +4,11 @@ import android.content.Context;
 
 import com.muazhakanemran.myapplication.events.GetNearVendingMachinesEvent;
 import com.muazhakanemran.myapplication.events.GetUserJobListEvent;
+import com.muazhakanemran.myapplication.events.PostDoTransactionEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
 import com.muazhakanemran.myapplication.events.SubscribeNewUserEvent;
+import com.muazhakanemran.myapplication.models.PostNewTransaction;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -51,6 +53,11 @@ public class NetworkManager {
     @Subscribe
     public void onGetUserJobListEvent(GetUserJobListEvent event){
         sNetworkClient.getUserJobList(event.getAndroid_id());
+    }
+
+    @Subscribe
+    public void onPostNewTransaction(PostDoTransactionEvent event){
+        sNetworkClient.postNewTransaction(event.getTransactionObj());
     }
 
 }

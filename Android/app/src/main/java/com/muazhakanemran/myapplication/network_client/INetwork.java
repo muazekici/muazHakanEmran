@@ -4,6 +4,8 @@ import com.muazhakanemran.myapplication.models.BasicResponse;
 import com.muazhakanemran.myapplication.models.Job;
 import com.muazhakanemran.myapplication.models.JobList;
 import com.muazhakanemran.myapplication.models.PostJobResponse;
+import com.muazhakanemran.myapplication.models.PostNewTransaction;
+import com.muazhakanemran.myapplication.models.PostNewTransactionResponse;
 import com.muazhakanemran.myapplication.models.SubscribeNewUser;
 import com.muazhakanemran.myapplication.models.VendorList;
 
@@ -32,4 +34,7 @@ public interface INetwork {
 
     @GET("users/me/{android_id}")
     Call<JobList> getUserJobList(@Path("android_id") String android_id);
+
+    @POST("users/recycle")
+    Call<PostNewTransactionResponse> postNewTransactipn(@Body PostNewTransaction transaction);
 }

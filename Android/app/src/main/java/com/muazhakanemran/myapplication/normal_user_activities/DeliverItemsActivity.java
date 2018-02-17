@@ -2,9 +2,11 @@ package com.muazhakanemran.myapplication.normal_user_activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.text.Line;
 import com.muazhakanemran.myapplication.R;
@@ -13,6 +15,9 @@ import com.muazhakanemran.myapplication.application.BaseApplication;
 import com.muazhakanemran.myapplication.base_classes.ActivityBase;
 import com.muazhakanemran.myapplication.events.GetUserJobListEvent;
 import com.muazhakanemran.myapplication.events.GetUserJobListResponseEvent;
+import com.muazhakanemran.myapplication.events.PostDoTransactionEvent;
+import com.muazhakanemran.myapplication.events.PostDoTransactionResponseEvent;
+import com.muazhakanemran.myapplication.models.PostNewTransaction;
 import com.squareup.otto.Subscribe;
 
 /**
@@ -63,6 +68,19 @@ public class DeliverItemsActivity extends ActivityBase {
         tvCurrentCoins = findViewById(R.id.tv_deliver_current_deposit);
         etDeliverKey = findViewById(R.id.et_deliver_automat_key);
         llSendKey = findViewById(R.id.ll_send_key);
+
+
+        llSendKey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PostNewTransaction transaction = new PostNewTransaction();
+                transaction.setUser_id(((BaseApplication)getApplication()).getUserId());
+                transaction.setTx_id(etDeliverKey.getText().toString());
+                PostDoTransactionEvent event = new PostDoTransactionEvent();
+                event.setTransactionObj(transaction);
+                getBus().post(event);
+            }
+        });
     }
 
     @Subscribe
@@ -70,4 +88,17 @@ public class DeliverItemsActivity extends ActivityBase {
         tvCurrentCoins.setText(event.getJobList().getCredits()+"");
 
     }
+
+    @Subscribe
+    public void onPostTransactionResponseEvent(PostDoTransactionResponseEvent event){
+        if(event.getResponse() == null){
+            Toast.makeText(this,"Girdiğiniz key yanlış.",Toast.LENGTH_LONG).show();
+        }else {
+            tvCurrentCoins.setText(event.getResponse().getCredits()+"");
+            etDeliverKey.setText("");
+            Toast.makeText(this,"İşleminiz başarıyla gerçekleştirildi.",Toast.LENGTH_LONG).show();
+
+        }
+    }
+
 }
