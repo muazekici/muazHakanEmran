@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_item_quantity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="quantity : "
+            android:ems="5"
+
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_item_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="55"
+            android:layout_toEndOf="@id/tv_item_quantity_label"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_item_id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="id : "
+            android:ems="5"
+            android:layout_below="@id/tv_item_quantity_label"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_item_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="55ada76ajad"
+            android:layout_toEndOf="@id/tv_item_id_label"
+            android:layout_alignTop="@id/tv_item_id_label"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_item_status_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="status : "
+            android:ems="5"
+            android:layout_below="@id/tv_item_id_label"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_item_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="active"
+            android:layout_toEndOf="@id/tv_item_status_label"
+            android:layout_alignTop="@id/tv_item_status_label"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="5dp"/>
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

@@ -1,7 +1,9 @@
 package com.muazhakanemran.myapplication.network_client;
 
+import com.muazhakanemran.myapplication.models.BasicResponse;
 import com.muazhakanemran.myapplication.models.Job;
 import com.muazhakanemran.myapplication.models.PostJobResponse;
+import com.muazhakanemran.myapplication.models.SubscribeNewUser;
 import com.muazhakanemran.myapplication.models.VendorList;
 
 import retrofit2.Call;
@@ -22,4 +24,7 @@ public interface INetwork {
 
     @POST("users/createJob")
     Call<PostJobResponse> postNewJob(@Body Job job);
+
+    @POST("users/subscribe")
+    Call<BasicResponse> postNewUser(@Body SubscribeNewUser user);
 }

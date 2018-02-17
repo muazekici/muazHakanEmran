@@ -56,6 +56,12 @@ public class ActivityBase extends AppCompatActivity {
         return -1;
     }
 
+    //for left menu layout
+    public int getLeftMenuLayout(){
+        return -1;
+    }
+
+
     //to show whether left menu is used, override this method
     public boolean isUseLeftMenu(){
         return true;
@@ -65,6 +71,8 @@ public class ActivityBase extends AppCompatActivity {
     public boolean isUseToolbar(){
         return true;
     }
+
+    public boolean isUseBackIcon() { return true;    }
 
 
 
@@ -154,8 +162,10 @@ public class ActivityBase extends AppCompatActivity {
                 }
             });
 
-        }else{
+        }else if(isUseBackIcon()){
             showBackOnToolbar();
+        }else{
+            hideBackOnToolbar();
         }
 
 
@@ -206,7 +216,12 @@ public class ActivityBase extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        this.mLeftMenuFragment = new LeftMenuFragment();
+        if(getLeftMenuLayout() == -1){
+            this.mLeftMenuFragment = LeftMenuFragment.newInstance(-1);
+        }else{
+            this.mLeftMenuFragment = LeftMenuFragment.newInstance(getLeftMenuLayout());
+
+        }
 
         fragmentTransaction.add(R.id.ll_base_activity_leftmenu_container, mLeftMenuFragment);
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.muazhakanemran.myapplication.events.GetNearVendingMachinesEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
+import com.muazhakanemran.myapplication.events.SubscribeNewUserEvent;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -39,6 +40,11 @@ public class NetworkManager {
     @Subscribe
     public void onPostNewJob(PostNewJobEvent event){
         sNetworkClient.postNewJob(event.getJob());
+    }
+
+    @Subscribe
+    public void onSubscribeNewUserEvent(SubscribeNewUserEvent event){
+        sNetworkClient.postNewUser(event.getUser());
     }
 
 }

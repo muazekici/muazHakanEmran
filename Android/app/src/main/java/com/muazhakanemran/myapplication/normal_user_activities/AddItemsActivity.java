@@ -1,4 +1,4 @@
-package com.muazhakanemran.myapplication;
+package com.muazhakanemran.myapplication.normal_user_activities;
 
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -20,12 +21,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.muazhakanemran.myapplication.R;
 import com.muazhakanemran.myapplication.application.BaseApplication;
 import com.muazhakanemran.myapplication.base_classes.ActivityBase;
 import com.muazhakanemran.myapplication.events.GetNearVendingMachinesEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobEvent;
+import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
 import com.muazhakanemran.myapplication.models.GetNearVendorsRequest;
 import com.muazhakanemran.myapplication.models.Job;
+import com.muazhakanemran.myapplication.models.PostJobResponse;
+import com.squareup.otto.Subscribe;
+
+import javax.xml.datatype.Duration;
 
 /**
  * Created by muazekici on 17.02.2018.
@@ -105,6 +112,18 @@ public class AddItemsActivity extends ActivityBase implements OnMapReadyCallback
         });
 
 
+    }
+
+
+    @Subscribe
+    public void onPostNewJobResponse(PostNewJobResponseEvent event){
+        if(event.getResponse().getMessage().equals("OK")){
+            Toast.makeText(this,"Yeni iş başarıyla eklendi", Toast.LENGTH_LONG).show();
+            etJobQuantity.setText("");
+        }else{
+            Toast.makeText(this,"Yeni iş eklenirken bir sorun oluştu", Toast.LENGTH_LONG).show();
+
+        }
     }
 
     @Override

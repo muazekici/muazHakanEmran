@@ -1,9 +1,13 @@
 package com.muazhakanemran.myapplication.network_client;
 
+import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
+import com.muazhakanemran.myapplication.events.SubscribeNewUserResponseEvent;
 import com.muazhakanemran.myapplication.events.VendorListResponseEvent;
+import com.muazhakanemran.myapplication.models.BasicResponse;
 import com.muazhakanemran.myapplication.models.GetNearVendorsRequest;
 import com.muazhakanemran.myapplication.models.Job;
 import com.muazhakanemran.myapplication.models.PostJobResponse;
+import com.muazhakanemran.myapplication.models.SubscribeNewUser;
 import com.muazhakanemran.myapplication.models.VendorList;
 import com.squareup.otto.Bus;
 
@@ -82,11 +86,34 @@ public class NetworkClient {
         call.enqueue(new Callback<PostJobResponse>() {
             @Override
             public void onResponse(Call<PostJobResponse> call, Response<PostJobResponse> response) {
-
+                PostNewJobResponseEvent event = new PostNewJobResponseEvent();
+                BasicResponse res = new BasicResponse();
+                res.setMessage(response.raw().message().equals("Created") ? "OK" : "ERROR");
+                event.setResponse(res);
+                mBus.post(event);
             }
 
             @Override
             public void onFailure(Call<PostJobResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void postNewUser(SubscribeNewUser user){
+
+        Call<BasicResponse> call = apiServiceInstance.postNewUser(user);
+
+        call.enqueue(new Callback<BasicResponse>() {
+            @Override
+            public void onResponse(Call<BasicResponse> call, Response<BasicResponse> response) {
+                SubscribeNewUserResponseEvent event = new SubscribeNewUserResponseEvent();
+                event.setResponse((BasicResponse) response.body());
+                mBus.post(event);
+            }
+
+            @Override
+            public void onFailure(Call<BasicResponse> call, Throwable t) {
 
             }
         });

@@ -6,7 +6,7 @@ import com.muazhakanemran.myapplication.models.BasicResponse;
  * Created by muazekici on 17.02.2018.
  */
 
-public class PostNewJobResponseEvent {
+public class SubscribeNewUserResponseEvent {
 
     BasicResponse response;
 

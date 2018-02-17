@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorWhite"
     android:paddingTop="50dp">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,32 +11,75 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_marginTop="40dp">
 
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:text="Ana Sayfa"/>
 
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/left_menu_item1"
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
-            android:text="Alt Baslik1"/>
+            android:padding="10dp"
+            android:text="Yeni İş Ekle"/>
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:id="@+id/left_menu_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:text="Bakiye Durumu"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/left_menu_item3"
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
-            android:text="AltBaslik2"/>
+            android:padding="10dp"
+            android:text="Merkeze Teslimat"/>
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+
+        <TextView
+            android:id="@+id/left_menu_item4"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:text="Kurye Hesabı"/>
 
     </LinearLayout>
 

@@ -1,4 +1,4 @@
-package com.muazhakanemran.myapplication;
+package com.muazhakanemran.myapplication.normal_user_activities;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,15 +20,17 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.muazhakanemran.myapplication.R;
 import com.muazhakanemran.myapplication.base_classes.ActivityBase;
 import com.muazhakanemran.myapplication.events.GetNearVendingMachinesEvent;
 import com.muazhakanemran.myapplication.events.VendorListResponseEvent;
+import com.muazhakanemran.myapplication.left_menu.LeftMenuFragment;
 import com.muazhakanemran.myapplication.models.GetNearVendorsRequest;
 import com.muazhakanemran.myapplication.models.Vendor;
 import com.muazhakanemran.myapplication.models.VendorList;
 import com.squareup.otto.Subscribe;
 
-public class MainActivity extends ActivityBase implements OnMapReadyCallback {
+public class MainActivity extends ActivityBase implements OnMapReadyCallback,LeftMenuFragment.onLeftMenuItemClicked {
 
 
     private SupportMapFragment mapFragment;
@@ -59,9 +61,10 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback {
     }
 
     @Override
-    public boolean isUseLeftMenu() {
-        return true;
-    }
+    public boolean isUseLeftMenu() { return true;    }
+
+    @Override
+    public boolean isUseBackIcon() { return false;    }
 
     @Override
     public boolean isUseToolbar() {
@@ -75,6 +78,7 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback {
 
         initViews();
         initComponents();
+        getmLeftMenuFragment().setItemClickListener(this);
     }
 
     private void initComponents() {
@@ -97,7 +101,7 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback {
                     return;
                 }
                 GetNearVendorsRequest req = new GetNearVendorsRequest();
-                req.setDist(3000);
+                req.setDist(100000);
                 req.setLat(lastLocation.getLatitude());
                 req.setLng(lastLocation.getLongitude());
 
@@ -140,6 +144,9 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback {
 
     private void initializeVendorLocations(){
         if(this.vendorMap != null && this.mVendorList != null){
+/*
+            List<LatLng> positionList = new ArrayList<LatLng>();
+*/
             for(Vendor v : mVendorList.getVendors()){
                 vendorMap.addMarker(new MarkerOptions()
                         .position(new LatLng(v.getLat(),v.getLng()))
@@ -147,7 +154,16 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback {
                         .snippet(""))
                         .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_recycler));
 
+/*
+                        positionList.add(new LatLng(v.getLat(),v.getLng()));
+*/
+
             }
+
+          /*  PolylineOptions options = new PolylineOptions().width(5).color(Color.BLUE).geodesic(true);
+            options.addAll(positionList);
+            Polyline polyline = vendorMap.addPolyline(options);*/
+
 
             vendorMap.addMarker(new MarkerOptions()
                     .position(new LatLng(lastLocation.getLatitude(),lastLocation.getLongitude()))
@@ -165,5 +181,23 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback {
 
         Intent intent  = new Intent(this,AddItemsActivity.class);
         startActivity(intent);
+    }
+
+
+    @Override
+    public void onItemClicked(int id) {
+        switch (id){
+            case R.id.left_menu_item1:
+                closeLeftMenu();
+                Intent intent  = new Intent(this,AddItemsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.left_menu_item2:
+
+                break;
+            case R.id.left_menu_item3:
+
+                break;
+        }
     }
 }
