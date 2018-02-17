@@ -1,18 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.muazhakanemran.myapplication.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_new_task"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorWhite"
+        android:padding="20dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_add_new_items"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/add_circle"
+            android:tint="@color/colorPrimary"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="onAddNewItemClicked"/>
+
+        <TextView
+            android:layout_below="@id/iv_add_new_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Elindeki dönüştürülebilir nesneler için bildirim oluştur."
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_below="@id/tv_main_map_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        />
+
+        <LinearLayout
+            android:id="@+id/ll_progress_translucent_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#50000000"
+            android:orientation="vertical"></LinearLayout>
+        <ProgressBar
+            android:id="@+id/pgr_progress_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/map"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorWhite"
+            android:progressBackgroundTint="@color/colorPrimary"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_main_map_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="çevrendeki toplama noktaları"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@+id/ll_new_task"
+        android:textSize="18dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/bg_main_title"
+        android:layout_marginBottom="-5dp"/>
+
+
+
+</RelativeLayout>

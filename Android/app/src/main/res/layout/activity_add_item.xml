@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_add_item_number_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adet giriniz"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="#50b3b3b3"/>
+
+    <EditText
+        android:id="@+id/et_item_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:hint="Adet giriniz"
+        android:textColor="@color/colorPrimary"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_centerHorizontal="true"
+
+        android:layout_below="@id/tv_add_item_number_title"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_location_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Marker ı sürükleyerek lokasyon belirtin"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_below="@id/et_item_number"
+        android:background="#50b3b3b3"/>
+
+
+    <fragment
+        android:id="@+id/items_location"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_continue"
+        android:layout_below="@id/tv_item_location_title"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/ll_continue"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="İş Oluştur"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"/>
+    </LinearLayout>
+
+</RelativeLayout>

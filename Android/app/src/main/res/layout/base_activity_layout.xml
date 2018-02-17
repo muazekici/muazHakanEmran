@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_base_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/base_activity_root_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/base_activity_toolbar_layout"/>
+
+        <ViewStub
+            android:id="@+id/vs_base_activity_content_viewstub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tb_base_activity_toolbar"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_base_activity_leftmenu_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="left"
+        android:background="@color/colorPrimary"></LinearLayout>
+</android.support.v4.widget.DrawerLayout>
