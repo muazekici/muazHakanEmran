@@ -121,7 +121,15 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback,Lef
         llTransparentBg = findViewById(R.id.ll_progress_translucent_bg);
         progressBar =  findViewById(R.id.pgr_progress_item);
         ivAddItems = findViewById(R.id.iv_add_new_items);
-
+        View view = getmToolbar().findViewById(R.id.iv_toolbar_right_item);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                closeLeftMenu();
+                Intent intent  = new Intent(MainActivity.this,CurrentDepositActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -169,7 +177,7 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback,Lef
                     .position(new LatLng(lastLocation.getLatitude(),lastLocation.getLongitude()))
                     .title("current location"));
 
-            vendorMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude()), 10));
+            vendorMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude()), 13));
 
 
             progressBar.setVisibility(View.GONE);
@@ -193,10 +201,14 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback,Lef
                 startActivity(intent);
                 break;
             case R.id.left_menu_item2:
-
+                closeLeftMenu();
+                Intent intent1  = new Intent(this,CurrentDepositActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.left_menu_item3:
-
+                closeLeftMenu();
+                Intent intent2  = new Intent(this,DeliverItemsActivity.class);
+                startActivity(intent2);
                 break;
         }
     }

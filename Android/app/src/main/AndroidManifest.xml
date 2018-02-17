@@ -41,6 +41,16 @@
 
         </activity>
 
+        <activity android:name=".normal_user_activities.CurrentDepositActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".normal_user_activities.DeliverItemsActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
         <activity android:name=".normal_user_activities.ChooseRoleActivity"
             android:screenOrientation="portrait" android:noHistory="true">
 

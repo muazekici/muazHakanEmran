@@ -2,9 +2,11 @@ package com.muazhakanemran.myapplication.normal_user_activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.vision.text.Line;
 import com.muazhakanemran.myapplication.R;
 import com.muazhakanemran.myapplication.adapters.AdapterTransactionHistory;
 import com.muazhakanemran.myapplication.application.BaseApplication;
@@ -17,12 +19,12 @@ import com.squareup.otto.Subscribe;
  * Created by muazekici on 17.02.2018.
  */
 
-public class CurrentDepositActivity extends ActivityBase {
+public class DeliverItemsActivity extends ActivityBase {
 
 
     @Override
     public int getContentLayout() {
-        return R.layout.activity_current_deposit;
+        return R.layout.activity_deliver_objects;
     }
 
 
@@ -43,34 +45,29 @@ public class CurrentDepositActivity extends ActivityBase {
     }
 
 
-
-    TextView tvCurrentDeposit;
-    RecyclerView rvJobList;
-    AdapterTransactionHistory jobListAdapter;
+    TextView tvCurrentCoins;
+    EditText etDeliverKey;
+    LinearLayout llSendKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initViews();
         GetUserJobListEvent event = new GetUserJobListEvent();
         event.setAndroid_id(((BaseApplication)getApplication()).getUserId());
         getBus().post(event);
     }
 
-    private void initViews(){
-        rvJobList = findViewById(R.id.rv_job_list);
-        tvCurrentDeposit = findViewById(R.id.tv_current_deposit);
 
+    private void initViews(){
+        tvCurrentCoins = findViewById(R.id.tv_deliver_current_deposit);
+        etDeliverKey = findViewById(R.id.et_deliver_automat_key);
+        llSendKey = findViewById(R.id.ll_send_key);
     }
 
     @Subscribe
     public void onUserJobListResponseEvent(GetUserJobListResponseEvent event){
-        tvCurrentDeposit.setText(event.getJobList().getCredits()+"");
-        jobListAdapter = new AdapterTransactionHistory(this,event.getJobList().getOpenJobs(),event.getJobList().getClosedJobs());
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        layoutManager.scrollToPosition(0);
-        rvJobList.setLayoutManager(layoutManager);
-        rvJobList.setAdapter(jobListAdapter);
+        tvCurrentCoins.setText(event.getJobList().getCredits()+"");
+
     }
 }

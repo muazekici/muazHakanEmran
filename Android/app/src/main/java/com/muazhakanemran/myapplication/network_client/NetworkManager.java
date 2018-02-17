@@ -3,6 +3,7 @@ package com.muazhakanemran.myapplication.network_client;
 import android.content.Context;
 
 import com.muazhakanemran.myapplication.events.GetNearVendingMachinesEvent;
+import com.muazhakanemran.myapplication.events.GetUserJobListEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
 import com.muazhakanemran.myapplication.events.SubscribeNewUserEvent;
@@ -45,6 +46,11 @@ public class NetworkManager {
     @Subscribe
     public void onSubscribeNewUserEvent(SubscribeNewUserEvent event){
         sNetworkClient.postNewUser(event.getUser());
+    }
+
+    @Subscribe
+    public void onGetUserJobListEvent(GetUserJobListEvent event){
+        sNetworkClient.getUserJobList(event.getAndroid_id());
     }
 
 }

@@ -60,7 +60,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:padding="10dp"
-            android:text="Merkeze Teslimat"/>
+            android:text="Otomata Teslimat"/>
 
         <View
 

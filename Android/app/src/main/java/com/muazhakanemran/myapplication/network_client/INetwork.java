@@ -2,6 +2,7 @@ package com.muazhakanemran.myapplication.network_client;
 
 import com.muazhakanemran.myapplication.models.BasicResponse;
 import com.muazhakanemran.myapplication.models.Job;
+import com.muazhakanemran.myapplication.models.JobList;
 import com.muazhakanemran.myapplication.models.PostJobResponse;
 import com.muazhakanemran.myapplication.models.SubscribeNewUser;
 import com.muazhakanemran.myapplication.models.VendorList;
@@ -10,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -27,4 +29,7 @@ public interface INetwork {
 
     @POST("users/subscribe")
     Call<BasicResponse> postNewUser(@Body SubscribeNewUser user);
+
+    @GET("users/me/{android_id}")
+    Call<JobList> getUserJobList(@Path("android_id") String android_id);
 }

@@ -8,17 +8,17 @@ import java.io.Serializable;
 
 public class Job implements Serializable {
 
-    String id;
+    String _id;
     int quantity;
     double lat;
     double lng;
 
     public String getId() {
-        return id;
+        return _id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this._id = id;
     }
 
     public int getQuantity() {

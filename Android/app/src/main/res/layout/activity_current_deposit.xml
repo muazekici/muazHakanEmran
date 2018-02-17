@@ -15,7 +15,7 @@
             android:id="@+id/tv_current_deposit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="150"
+            android:text=""
             android:textSize="22sp"/>
         <TextView
 
@@ -26,7 +26,9 @@
     </LinearLayout>
 
 <android.support.v7.widget.RecyclerView
+    android:id="@+id/rv_job_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_below="@id/ll_current_deposit"></android.support.v7.widget.RecyclerView>
+    android:layout_below="@id/ll_current_deposit"
+    android:layout_marginTop="10dp"></android.support.v7.widget.RecyclerView>
 </RelativeLayout>

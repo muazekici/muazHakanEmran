@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_deliver_current_deposit"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_deliver_current_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="22sp"/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Coin"
+            android:textSize="22sp"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_deliver_key_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lütfen otomatta gördüğünüz şifreyi giriniz"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:layout_below="@id/ll_deliver_current_deposit"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+
+    <EditText
+        android:id="@+id/et_deliver_automat_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_deliver_key_label"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="işlem şifresi"
+        android:textColor="@color/colorPrimary"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/ll_send_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_below="@id/et_deliver_automat_key"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Şifreyi Gönder"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"/>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

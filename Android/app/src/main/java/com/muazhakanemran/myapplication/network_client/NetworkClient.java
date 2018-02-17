@@ -1,11 +1,13 @@
 package com.muazhakanemran.myapplication.network_client;
 
+import com.muazhakanemran.myapplication.events.GetUserJobListResponseEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
 import com.muazhakanemran.myapplication.events.SubscribeNewUserResponseEvent;
 import com.muazhakanemran.myapplication.events.VendorListResponseEvent;
 import com.muazhakanemran.myapplication.models.BasicResponse;
 import com.muazhakanemran.myapplication.models.GetNearVendorsRequest;
 import com.muazhakanemran.myapplication.models.Job;
+import com.muazhakanemran.myapplication.models.JobList;
 import com.muazhakanemran.myapplication.models.PostJobResponse;
 import com.muazhakanemran.myapplication.models.SubscribeNewUser;
 import com.muazhakanemran.myapplication.models.VendorList;
@@ -74,6 +76,24 @@ public class NetworkClient {
 
             @Override
             public void onFailure(Call<VendorList> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getUserJobList(String android_id){
+        Call<JobList> call = apiServiceInstance.getUserJobList(android_id);
+
+        call.enqueue(new Callback<JobList>() {
+            @Override
+            public void onResponse(Call<JobList> call, Response<JobList> response) {
+                GetUserJobListResponseEvent event = new GetUserJobListResponseEvent();
+                event.setJobList(response.body());
+                mBus.post(event);
+            }
+
+            @Override
+            public void onFailure(Call<JobList> call, Throwable t) {
 
             }
         });
