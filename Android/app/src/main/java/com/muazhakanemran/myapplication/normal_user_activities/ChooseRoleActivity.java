@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.muazhakanemran.myapplication.courier_user_activities.CourierMainActivity;
 import com.muazhakanemran.myapplication.R;
 import com.muazhakanemran.myapplication.application.BaseApplication;
 import com.muazhakanemran.myapplication.base_classes.ActivityBase;
@@ -59,6 +60,8 @@ public class ChooseRoleActivity extends ActivityBase {
         if(role != -1){
             if(role == COURIER){
 
+                Intent intent = new Intent(this,CourierMainActivity.class);
+                startActivity(intent);
             }else if(role == NORMAL_USER){
                 Intent intent = new Intent(this,MainActivity.class);
                 startActivity(intent);
@@ -97,8 +100,13 @@ public class ChooseRoleActivity extends ActivityBase {
             public void onClick(View view) {
                 editor.putInt("UserRole",COURIER);
                 editor.commit();
-                /*Intent intent = new Intent(ChooseRoleActivity.this,MainActivity.class);
-                startActivity(intent);*/
+
+                SubscribeNewUserEvent event = new SubscribeNewUserEvent();
+                SubscribeNewUser user= new SubscribeNewUser();
+                user.setName(etUserName.getText().toString());
+                user.setAndroid_id(((BaseApplication)getApplication()).getUserId());
+                event.setUser(user);
+                getBus().post(event);
             }
         });
 
@@ -109,7 +117,8 @@ public class ChooseRoleActivity extends ActivityBase {
     public void onSubscribeNewUser(SubscribeNewUserResponseEvent event){
         if(event.getResponse().getMessage().equals( "Created user successfully")){
             if(role == COURIER){
-
+                Intent intent = new Intent(ChooseRoleActivity.this,CourierMainActivity.class);
+                startActivity(intent);
             }else if(role == NORMAL_USER){
                 Intent intent = new Intent(ChooseRoleActivity.this,MainActivity.class);
                 startActivity(intent);

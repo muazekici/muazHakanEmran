@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/tv_choose_location_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="marker ı sürükleyerek konum seçiniz"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"/>
+
+
+    <fragment
+        android:id="@+id/map_choose_location"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_choose_location_label"
+        android:layout_above="@id/ll_courier_select_location"
+
+        />
+
+
+    <LinearLayout
+        android:id="@+id/ll_courier_select_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+
+        android:layout_alignParentBottom="true">
+
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seçili konumla devam et"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

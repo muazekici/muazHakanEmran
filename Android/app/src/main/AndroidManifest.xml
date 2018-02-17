@@ -51,6 +51,21 @@
 
         </activity>
 
+        <activity android:name=".courier_user_activities.ChooseLocationActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".courier_user_activities.CourierMainActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".courier_user_activities.CourierStartStationWorkActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
         <activity android:name=".normal_user_activities.ChooseRoleActivity"
             android:screenOrientation="portrait" android:noHistory="true">
 

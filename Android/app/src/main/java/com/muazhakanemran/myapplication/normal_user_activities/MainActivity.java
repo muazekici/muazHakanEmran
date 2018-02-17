@@ -1,8 +1,10 @@
 package com.muazhakanemran.myapplication.normal_user_activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.muazhakanemran.myapplication.courier_user_activities.CourierMainActivity;
 import com.muazhakanemran.myapplication.R;
 import com.muazhakanemran.myapplication.base_classes.ActivityBase;
 import com.muazhakanemran.myapplication.events.GetNearVendingMachinesEvent;
@@ -210,6 +213,15 @@ public class MainActivity extends ActivityBase implements OnMapReadyCallback,Lef
                 Intent intent2  = new Intent(this,DeliverItemsActivity.class);
                 startActivity(intent2);
                 break;
+            case R.id.left_menu_item4:
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("userRole",1);
+                editor.commit();
+                closeLeftMenu();
+                Intent intent3  = new Intent(this,CourierMainActivity.class);
+                startActivity(intent3);
+
         }
     }
 }
