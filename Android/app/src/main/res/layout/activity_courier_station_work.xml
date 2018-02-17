@@ -33,12 +33,27 @@
         android:textColor="@color/colorPrimary"
         />
 
+
+    <TextView
+        android:id="@+id/tv_courier_choose_loc_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toplama merkezleri için konum seçiniz"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:layout_below="@+id/et_courier_amount"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="20dp"/>
+
     <LinearLayout
         android:id="@+id/ll_courier_station_location_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:layout_below="@id/et_courier_amount"
+        android:layout_below="@id/tv_courier_choose_loc_label"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:padding="10dp"
@@ -70,18 +85,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:layout_below="@id/ll_courier_station_location_select"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:padding="10dp"
         android:orientation="horizontal"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp">
+      >
 
 
 
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Merkezleri Ara"

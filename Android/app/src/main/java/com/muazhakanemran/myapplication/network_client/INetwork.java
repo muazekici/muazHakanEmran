@@ -8,6 +8,7 @@ import com.muazhakanemran.myapplication.models.PostNewTransaction;
 import com.muazhakanemran.myapplication.models.PostNewTransactionResponse;
 import com.muazhakanemran.myapplication.models.SubscribeNewUser;
 import com.muazhakanemran.myapplication.models.VendorList;
+import com.muazhakanemran.myapplication.models.VendorWorkRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -37,4 +38,7 @@ public interface INetwork {
 
     @POST("users/recycle")
     Call<PostNewTransactionResponse> postNewTransactipn(@Body PostNewTransaction transaction);
+
+    @POST("couriers/getVendorRoute")
+    Call<VendorList> getNearVendorsAndFactory(@Body VendorWorkRequest request);
 }

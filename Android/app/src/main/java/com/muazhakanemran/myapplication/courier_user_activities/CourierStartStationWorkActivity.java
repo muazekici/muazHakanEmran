@@ -25,7 +25,7 @@ public class CourierStartStationWorkActivity extends ActivityBase {
 
     @Override
     public int getToolbarLayout() {
-        return R.layout.courier_toolbar_layout;
+        return R.layout.toolbar_layout_empty;
     }
 
     @Override
@@ -52,8 +52,8 @@ public class CourierStartStationWorkActivity extends ActivityBase {
     }
 
     private void initViews(){
-        llSearch = findViewById(R.id.ll_courier_station_location_select);
-
+        llSearch = findViewById(R.id.ll_courier_station_search);
+        llChooseLocation = findViewById(R.id.ll_courier_station_location_select);
         llChooseLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

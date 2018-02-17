@@ -1,6 +1,7 @@
 package com.muazhakanemran.myapplication.network_client;
 
 import com.muazhakanemran.myapplication.events.GetUserJobListResponseEvent;
+import com.muazhakanemran.myapplication.events.GetVendorWorkListResponseEvent;
 import com.muazhakanemran.myapplication.events.PostDoTransactionResponseEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
 import com.muazhakanemran.myapplication.events.SubscribeNewUserResponseEvent;
@@ -14,6 +15,7 @@ import com.muazhakanemran.myapplication.models.PostNewTransaction;
 import com.muazhakanemran.myapplication.models.PostNewTransactionResponse;
 import com.muazhakanemran.myapplication.models.SubscribeNewUser;
 import com.muazhakanemran.myapplication.models.VendorList;
+import com.muazhakanemran.myapplication.models.VendorWorkRequest;
 import com.squareup.otto.Bus;
 
 import okhttp3.OkHttpClient;
@@ -156,6 +158,25 @@ public class NetworkClient {
 
             @Override
             public void onFailure(Call<PostNewTransactionResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    public void getVendorWorkList(VendorWorkRequest request){
+        Call<VendorList> call = apiServiceInstance.getNearVendorsAndFactory(request);
+
+        call.enqueue(new Callback<VendorList>() {
+            @Override
+            public void onResponse(Call<VendorList> call, Response<VendorList> response) {
+                GetVendorWorkListResponseEvent event = new GetVendorWorkListResponseEvent();
+                event.setVendorList(response.body());
+                mBus.post(event);
+            }
+
+            @Override
+            public void onFailure(Call<VendorList> call, Throwable t) {
 
             }
         });

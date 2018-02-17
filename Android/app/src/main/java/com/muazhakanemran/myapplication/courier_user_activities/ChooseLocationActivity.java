@@ -39,14 +39,14 @@ public class ChooseLocationActivity extends ActivityBase  implements OnMapReadyC
 
     @Override
     public int getToolbarLayout() {
-        return R.layout.courier_toolbar_layout;
+        return R.layout.toolbar_layout_empty;
     }
 
     @Override
     public boolean isUseLeftMenu() { return false;    }
 
     @Override
-    public boolean isUseBackIcon() { return false;    }
+    public boolean isUseBackIcon() { return true;    }
 
     @Override
     public boolean isUseToolbar() {
@@ -75,7 +75,7 @@ public class ChooseLocationActivity extends ActivityBase  implements OnMapReadyC
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.items_location);
+                .findFragmentById(R.id.map_choose_location);
 
         mapFragment.getMapAsync(this);
 
@@ -87,6 +87,7 @@ public class ChooseLocationActivity extends ActivityBase  implements OnMapReadyC
                 returnIntent.putExtra("lat",lastLocation.getLatitude());
                 returnIntent.putExtra("lng",lastLocation.getLongitude());
                 setResult(Activity.RESULT_OK,returnIntent);
+                finish();
 
             }
         });

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.muazhakanemran.myapplication.events.GetNearVendingMachinesEvent;
 import com.muazhakanemran.myapplication.events.GetUserJobListEvent;
+import com.muazhakanemran.myapplication.events.GetVendorWorkListEvent;
 import com.muazhakanemran.myapplication.events.PostDoTransactionEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
@@ -58,6 +59,11 @@ public class NetworkManager {
     @Subscribe
     public void onPostNewTransaction(PostDoTransactionEvent event){
         sNetworkClient.postNewTransaction(event.getTransactionObj());
+    }
+
+    @Subscribe
+    public void onGetVendorWorkListEvent(GetVendorWorkListEvent event){
+        sNetworkClient.getVendorWorkList(event.getRequest());
     }
 
 }
