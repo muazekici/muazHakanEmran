@@ -3,6 +3,7 @@ package com.muazhakanemran.myapplication.network_client;
 import com.muazhakanemran.myapplication.events.GetUserJobListResponseEvent;
 import com.muazhakanemran.myapplication.events.GetVendorWorkListResponseEvent;
 import com.muazhakanemran.myapplication.events.PostDoTransactionResponseEvent;
+import com.muazhakanemran.myapplication.events.PostFactoryTransactionResponseEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
 import com.muazhakanemran.myapplication.events.SubscribeNewUserResponseEvent;
 import com.muazhakanemran.myapplication.events.VendorListResponseEvent;
@@ -177,6 +178,26 @@ public class NetworkClient {
 
             @Override
             public void onFailure(Call<VendorList> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    public void postFactoryTransaction(PostNewTransaction transaction){
+        Call<PostNewTransactionResponse> call = apiServiceInstance.postFactoryTransaction(transaction);
+
+        call.enqueue(new Callback<PostNewTransactionResponse>() {
+            @Override
+            public void onResponse(Call<PostNewTransactionResponse> call, Response<PostNewTransactionResponse> response) {
+
+                PostFactoryTransactionResponseEvent event = new PostFactoryTransactionResponseEvent();
+                event.setResponse(response.body());
+                mBus.post(event);
+            }
+
+            @Override
+            public void onFailure(Call<PostNewTransactionResponse> call, Throwable t) {
 
             }
         });

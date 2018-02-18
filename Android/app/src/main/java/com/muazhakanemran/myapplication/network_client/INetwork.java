@@ -41,4 +41,8 @@ public interface INetwork {
 
     @POST("couriers/getVendorRoute")
     Call<VendorList> getNearVendorsAndFactory(@Body VendorWorkRequest request);
+
+
+    @POST("couriers/finishJob")
+    Call<PostNewTransactionResponse> postFactoryTransaction(@Body PostNewTransaction transaction);
 }

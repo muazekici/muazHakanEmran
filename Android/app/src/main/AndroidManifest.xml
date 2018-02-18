@@ -66,6 +66,16 @@
 
         </activity>
 
+        <activity android:name=".courier_user_activities.CourierShowVendorsActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".courier_user_activities.CourierFactoryFinishActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
         <activity android:name=".normal_user_activities.ChooseRoleActivity"
             android:screenOrientation="portrait" android:noHistory="true">
 

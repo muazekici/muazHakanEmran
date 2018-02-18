@@ -13,6 +13,23 @@ public class Vendor implements Serializable {
     String _id;
     double lat;
     double lng;
+    boolean isFactory;
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public boolean isFactory() {
+        return isFactory;
+    }
+
+    public void setFactory(boolean factory) {
+        isFactory = factory;
+    }
 
     public String getName() {
         return name;

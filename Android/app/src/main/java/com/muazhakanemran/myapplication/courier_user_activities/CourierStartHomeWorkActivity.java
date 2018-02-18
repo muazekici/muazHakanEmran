@@ -12,14 +12,15 @@ import com.muazhakanemran.myapplication.R;
 import com.muazhakanemran.myapplication.base_classes.ActivityBase;
 
 /**
- * Created by muazekici on 17.02.2018.
+ * Created by muazekici on 18.02.2018.
  */
 
-public class CourierStartStationWorkActivity extends ActivityBase {
+public class CourierStartHomeWorkActivity extends ActivityBase {
+
 
     @Override
     public int getContentLayout() {
-        return R.layout.activity_courier_station_work;
+        return R.layout.activity_courier_home_work;
     }
 
 
@@ -58,7 +59,7 @@ public class CourierStartStationWorkActivity extends ActivityBase {
         llChooseLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CourierStartStationWorkActivity.this,ChooseLocationActivity.class);
+                Intent intent = new Intent(CourierStartHomeWorkActivity.this,ChooseLocationActivity.class);
                 startActivityForResult(intent,314);
             }
         });
@@ -66,7 +67,7 @@ public class CourierStartStationWorkActivity extends ActivityBase {
         llSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CourierStartStationWorkActivity.this,CourierShowVendorsActivity.class);
+                Intent intent = new Intent(CourierStartHomeWorkActivity.this,CourierShowVendorsActivity.class);
                 intent.putExtra("location",loc);
                 intent.putExtra("amount",Integer.parseInt(etAmount.getText().toString()));
                 startActivity(intent);
@@ -79,8 +80,8 @@ public class CourierStartStationWorkActivity extends ActivityBase {
         if(requestCode == 314){
             if(resultCode == Activity.RESULT_OK ){
                 loc = new Location("courier");
-                loc.setLongitude(data.getDoubleExtra("lat",0));
-                loc.setLatitude(data.getDoubleExtra("lng",0));
+                loc.setLongitude(data.getDoubleExtra("lng",0));
+                loc.setLatitude(data.getDoubleExtra("lat",0));
             }
         }
     }

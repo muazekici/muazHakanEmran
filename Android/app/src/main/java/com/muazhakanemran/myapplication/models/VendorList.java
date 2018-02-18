@@ -1,6 +1,7 @@
 package com.muazhakanemran.myapplication.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by muazekici on 17.02.2018.
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class VendorList {
 
     int count;
-    ArrayList<Vendor> vendors;
+    List<Vendor> vendors;
 
     public int getCount() {
         return count;
@@ -19,11 +20,11 @@ public class VendorList {
         this.count = count;
     }
 
-    public ArrayList<Vendor> getVendors() {
+    public List<Vendor> getVendors() {
         return vendors;
     }
 
-    public void setVendors(ArrayList<Vendor> vendors) {
+    public void setVendors(List<Vendor> vendors) {
         this.vendors = vendors;
     }
 }

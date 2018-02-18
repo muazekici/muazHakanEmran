@@ -6,6 +6,7 @@ import com.muazhakanemran.myapplication.events.GetNearVendingMachinesEvent;
 import com.muazhakanemran.myapplication.events.GetUserJobListEvent;
 import com.muazhakanemran.myapplication.events.GetVendorWorkListEvent;
 import com.muazhakanemran.myapplication.events.PostDoTransactionEvent;
+import com.muazhakanemran.myapplication.events.PostFactoryTransactionEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobEvent;
 import com.muazhakanemran.myapplication.events.PostNewJobResponseEvent;
 import com.muazhakanemran.myapplication.events.SubscribeNewUserEvent;
@@ -64,6 +65,11 @@ public class NetworkManager {
     @Subscribe
     public void onGetVendorWorkListEvent(GetVendorWorkListEvent event){
         sNetworkClient.getVendorWorkList(event.getRequest());
+    }
+
+    @Subscribe
+    public void onPostNewFactoryTransactionEvent(PostFactoryTransactionEvent event){
+        sNetworkClient.postFactoryTransaction(event.getTransactionObj());
     }
 
 }
