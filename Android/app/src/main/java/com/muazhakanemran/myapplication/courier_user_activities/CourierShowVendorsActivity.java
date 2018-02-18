@@ -104,6 +104,10 @@ public class CourierShowVendorsActivity extends ActivityBase implements OnMapRea
         llSearchRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(vendorList == null){
+                    return;
+                }
                 Uri mapUri = createURIforMap();
                 Intent intent = new Intent(Intent.ACTION_VIEW, mapUri);
                 intent.setPackage("com.google.android.apps.maps");

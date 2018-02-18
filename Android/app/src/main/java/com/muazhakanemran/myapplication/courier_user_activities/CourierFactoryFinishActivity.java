@@ -14,6 +14,7 @@ import com.muazhakanemran.myapplication.events.GetUserJobListEvent;
 import com.muazhakanemran.myapplication.events.GetUserJobListResponseEvent;
 import com.muazhakanemran.myapplication.events.PostDoTransactionEvent;
 import com.muazhakanemran.myapplication.events.PostFactoryTransactionEvent;
+import com.muazhakanemran.myapplication.events.PostFactoryTransactionResponseEvent;
 import com.muazhakanemran.myapplication.models.PostNewTransaction;
 import com.muazhakanemran.myapplication.models.PostNewTransactionResponse;
 import com.squareup.otto.Subscribe;
@@ -87,14 +88,14 @@ public class CourierFactoryFinishActivity extends ActivityBase{
     }
 
     @Subscribe
-    public void onFactoryTransactionResponseEvent(PostNewTransactionResponse response){
-        if(response == null){
+    public void onFactoryTransactionResponseEvent(PostFactoryTransactionResponseEvent event){
+        if(event.getResponse() == null){
             Toast.makeText(this,"İşlem gerçekleştirilemedi", Toast.LENGTH_LONG).show();
 
         }else {
             Toast.makeText(this,"İşlem başarıyla gerçekleştirildi", Toast.LENGTH_LONG).show();
 
-            tvCoinAmount.setText(response.getCredits() + "");
+            tvCoinAmount.setText(event.getResponse().getCredits() + "");
         }
 
     }
